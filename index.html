@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Monitor and track attribution cookies for affiliate marketing">
+    <meta name="robots" content="noindex, nofollow">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Cookie Attribution Monitor</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%234a6fa5' d='M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2ZM6.5,8.5a1.5,1.5,0,1,1,1.5,1.5A1.5,1.5,0,0,1,6.5,8.5ZM8,17a1,1,0,1,1,1-1A1,1,0,0,1,8,17Zm4-3a1.5,1.5,0,1,1,1.5-1.5A1.5,1.5,0,0,1,12,14ZM9.5,9A0.5,0.5,0,1,1,10,9.5,0.5,0.5,0,0,1,9.5,9ZM16,17a2,2,0,1,1,2-2A2,2,0,0,1,16,17Zm.5-6.5a1,1,0,1,1,1-1A1,1,0,0,1,16.5,10.5Z'/%3E%3C/svg%3E" type="image/svg+xml">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Cookie Attribution Monitor</h1>
+            <p class="redirect-notice">This page shows all cookies that have been set by the bridge page.</p>
+        </header>
+        
+        <main>
+            <section class="panel" id="all-cookies-panel">
+                <h2>Current Cookies</h2>
+                <div id="cookie-list" class="cookie-container"></div>
+            </section>
+            
+            <section class="panel" id="attribution-panel">
+                <h2>Attribution Cookies</h2>
+                <p>Cookies that maintain attribution for affiliate conversions:</p>
+                <div id="cross-origin-cookies" class="cookie-container"></div>
+            </section>
+            
+            <section class="panel" id="history-panel">
+                <h2>Cookie History</h2>
+                <p>Changes to cookies during this session:</p>
+                <div id="cookie-history" class="cookie-container"></div>
+            </section>
+        </main>
+        
+        <div class="controls">
+            <button id="refresh-btn" aria-label="Refresh cookie data">Refresh Cookie Data</button>
+            <button id="clear-history-btn" aria-label="Clear history">Clear History</button>
+        </div>
+        
+        <footer>
+            <p>Destination page for attribution tracking verification</p>
+        </footer>
+    </div>
+    
+    <script src="cookie-monitor.min.js" defer></script>
+</body>
+</html> 
