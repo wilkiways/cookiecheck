@@ -14,10 +14,16 @@
     <div class="container">
         <header>
             <h1>Cookie Attribution Monitor</h1>
-            <p class="redirect-notice">This page shows all cookies that have been set by the bridge page.</p>
+            <p class="redirect-notice">This page shows all cookies and URL parameters that have been set by the bridge page.</p>
         </header>
         
         <main>
+            <section class="panel" id="url-params-panel">
+                <h2>URL Parameters</h2>
+                <p>Attribution data passed through URL parameters:</p>
+                <div id="url-params-list" class="cookie-container"></div>
+            </section>
+            
             <section class="panel" id="all-cookies-panel">
                 <h2>Current Cookies</h2>
                 <div id="cookie-list" class="cookie-container"></div>
@@ -37,7 +43,7 @@
         </main>
         
         <div class="controls">
-            <button id="refresh-btn" aria-label="Refresh cookie data">Refresh Cookie Data</button>
+            <button id="refresh-btn" aria-label="Refresh cookie data">Refresh Data</button>
             <button id="clear-history-btn" aria-label="Clear history">Clear History</button>
         </div>
         

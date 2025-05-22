@@ -19,6 +19,7 @@
     --affiliate-color: #009688;
     --shadow-color: rgba(0, 0, 0, 0.05);
     --hover-shadow: rgba(0, 0, 0, 0.1);
+    --url-param-color: #673ab7;
 }
 
 /* Dark theme colors */
@@ -148,6 +149,10 @@ h2 {
     border-top-color: var(--affiliate-color);
 }
 
+#url-params-panel {
+    border-top-color: var(--url-param-color);
+}
+
 #history-panel {
     border-top-color: var(--modified-color);
 }
@@ -235,6 +240,10 @@ h2 {
 
 .device-fingerprinting {
     background-color: var(--fingerprinting-color);
+}
+
+.url-parameter {
+    background-color: var(--url-param-color);
 }
 
 .unknown {

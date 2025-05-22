@@ -1,69 +1,77 @@
 # Cookie Attribution Monitor
 
-A specialized tool to monitor and track cookies that have been set by your affiliate bridge page, making it easy to verify attribution is working correctly.
+A tool for verifying and monitoring attribution cookies and URL parameters for affiliate marketing and tracking.
 
 ## Overview
 
-This tool provides a visual interface to:
+This tool helps verify if your bridge or landing pages are correctly setting cookies for attribution tracking. It shows:
 
-1. See all cookies currently set in the browser
-2. Identify and highlight cookies related to affiliate attribution 
-3. Track changes to cookies over time (additions, modifications, deletions)
+1. **URL Parameters** - Attribution data passed through the URL
+2. **Cookies** - All cookies accessible to the cookie monitor
+3. **Attribution Cookies** - Highlighted cookies related to tracking/attribution
+4. **Cookie History** - Changes to cookies during the session
 
-The system is particularly designed to detect cookies used for:
-- Visitor tracking
-- Session management
-- Fingerprinting 
-- Verification systems
-- Analytics
-- Affiliate attribution
+## Usage
 
-## How It Works
+### Direct Usage
 
-1. Your bridge page sets tracking cookies and other attribution identifiers
-2. The bridge page redirects to this cookie monitor (set as final destination)
-3. This monitor displays all cookies, highlighting attribution-related ones
-4. You can verify if your attribution system is correctly maintaining cookies
+Simply access the tool at: [https://cookiecheck.pages.dev](https://cookiecheck.pages.dev)
 
-## Files Included
+### Cross-Domain Integration
 
-- `index.html` - The cookie monitoring interface (final destination page)
-- `cookie-monitor.min.js` - JavaScript logic for cookie monitoring (minified)
-- `styles.css` - Styling for the monitor interface
+Due to browser security restrictions, cookies from other domains aren't directly visible to the cookie monitor. To check cross-domain cookies, use one of these methods:
 
-## Installation
+#### Method 1: URL Parameter Passing (Recommended)
 
-1. Upload all files to your web server
-2. Configure your bridge page to redirect to the index.html page after setting cookies
-3. Access the page through your bridge page to see if attribution is carried over
+On your bridge page, add the following code before redirecting to the cookie monitor:
 
-## How to Use
+```javascript
+// Collect all your cookies and URL parameters
+const cookieData = encodeURIComponent(document.cookie);
 
-### Basic Usage
+// Redirect to the cookie monitor with cookie data in URL
+window.location.href = "https://cookiecheck.pages.dev/?cookieData=" + cookieData + "&source=" + source + "&campaign=" + campaign;
+```
 
-1. Access your bridge page which should set cookies and redirect to this monitor
-2. The monitor automatically shows all cookies that have been set
-3. The "Attribution Cookies" section highlights cookies specifically related to attribution
-4. You can manually refresh by clicking the "Refresh Cookie Data" button
-5. Cookie changes will be recorded in the "Cookie History" section
+This will pass your cookies as a URL parameter that the cookie monitor can display.
 
-### Cross-Origin Detection
+#### Method 2: Pass Individual Parameters
 
-Cookies that are identified as potentially related to affiliate attribution will be highlighted in the "Attribution Cookies" section. This helps identify cookies that:
+Pass attribution data directly in the URL:
 
-- Contain specific patterns matching known tracking mechanisms
-- Are related to verification, analytics, or fingerprinting systems
-- Maintain user attribution across sessions
+```javascript
+window.location.href = "https://cookiecheck.pages.dev/?clickid=" + clickId + 
+                       "&source=" + source + 
+                       "&campaign=" + campaign +
+                       "&offer_id=" + offerId;
+```
 
-## Technical Details
+### Making Cookies Cross-Domain Accessible
 
-The cookie monitor uses the standard `document.cookie` API to track cookies. For advanced tracking mechanisms like those using WebAssembly or SharedArrayBuffer, additional monitoring tools may be required.
+If you need cookies to be directly accessible:
 
-## Prerequisites
+```javascript
+// Set cookies with proper attributes for cross-domain access
+document.cookie = "attribution=value; SameSite=None; Secure; domain=.yourdomain.com";
+```
 
-- A modern web browser
-- JavaScript enabled
+Note: Many browsers restrict third-party cookies, so URL parameter passing is more reliable.
 
-## Security Note
+## Self-Hosting
 
-This tool is meant for testing and verification purposes. It does not access or transmit any cookie data outside your browser. 
+1. Clone this repository
+2. Deploy the files to any static web hosting (Cloudflare Pages, Netlify, Vercel, etc.)
+3. No build step or dependencies needed
+
+## Features
+
+- Real-time cookie monitoring
+- URL parameter display
+- Categorization of cookies by purpose
+- Cookie change history
+- Mobile-friendly responsive design
+- Dark mode support
+
+## License
+
+MIT 
